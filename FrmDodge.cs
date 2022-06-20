@@ -37,6 +37,9 @@ namespace _2022_Level2_Dodge
         {
             // pass lives from LblLives Text property to lives variable
             lives = int.Parse(LblLives.Text);
+
+            MessageBox.Show("Use the left and right arrow keys to move the spaceship. \n Don't get hit by the planets! \n Every planet that gets past scores a point. \n If a planet hits a spaceship a life is lost! \n \n Enter your Name \n Click Start to begin", "Game Instructions");
+            TxtName.Focus();
         }
 
         private void PnlGame_Paint(object sender, PaintEventArgs e)
@@ -85,19 +88,28 @@ namespace _2022_Level2_Dodge
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            score = 0;
-            LblScore.Text = score.ToString();
-            lives = 5;
-            LblLives.Text = lives.ToString();
-
             TmrPlanet.Enabled = true;
             TmrShip.Enabled = true;
+            TxtName.Enabled = false;
         }
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TmrShip.Enabled = false;
             TmrPlanet.Enabled = false;
+            TxtName.Enabled = true;
+        }
+
+        private void restartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            score = 0;
+            LblScore.Text = score.ToString();
+            lives = 5;
+            LblLives.Text = lives.ToString();
+
+            TmrShip.Enabled = false;
+            TmrPlanet.Enabled = false;
+            TxtName.Enabled = true;
         }
 
         private void TmrPlanet_Tick(object sender, EventArgs e)
