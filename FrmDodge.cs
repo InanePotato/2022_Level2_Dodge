@@ -83,6 +83,23 @@ namespace _2022_Level2_Dodge
             }
         }
 
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            score = 0;
+            LblScore.Text = score.ToString();
+            lives = 5;
+            LblLives.Text = lives.ToString();
+
+            TmrPlanet.Enabled = true;
+            TmrShip.Enabled = true;
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TmrShip.Enabled = false;
+            TmrPlanet.Enabled = false;
+        }
+
         private void TmrPlanet_Tick(object sender, EventArgs e)
         {
             for (int i = 0; i < 7; i++)
